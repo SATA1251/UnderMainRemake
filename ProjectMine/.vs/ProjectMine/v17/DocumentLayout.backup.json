@@ -1,0 +1,239 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\script\\enemy\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\script\\enemy\\enemydamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy\\enemydamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|c:\\users\\sbsgame\\desktop\\gwangsan\\5_project\\projectmine\\assets\\script\\enemy\\enemyfov.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy\\enemyfov.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\script\\enemy\\enemyctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy\\enemyctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|c:\\users\\sbsgame\\desktop\\gwangsan\\5_project\\projectmine\\assets\\script\\map\\maploader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\map\\maploader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\scenes\\khj\\script\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\khj\\script\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\scenes\\khj\\script\\oxygenpipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\khj\\script\\oxygenpipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\scenes\\khj\\script\\hand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\khj\\script\\hand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\scenes\\khj\\script\\attackcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\khj\\script\\attackcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\scenes\\khj\\script\\calcability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\khj\\script\\calcability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\scenes\\khj\\script\\rock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\khj\\script\\rock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\script\\player\\playerctrltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\playerctrltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\assets\\script\\map\\wallscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B4F523-644A-B828-D142-4074CF92C505}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\map\\wallscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 271,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CalcAbility.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\CalcAbility.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\KHJ\\Script\\CalcAbility.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\CalcAbility.cs",
+              "RelativeToolTip": "Assets\\Scenes\\KHJ\\Script\\CalcAbility.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:43:00.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MapLoader.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Map\\MapLoader.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Map\\MapLoader.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Map\\MapLoader.cs",
+              "RelativeToolTip": "Assets\\Script\\Map\\MapLoader.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAABIwCUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:10:53.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Rock.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\Rock.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\KHJ\\Script\\Rock.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\Rock.cs",
+              "RelativeToolTip": "Assets\\Scenes\\KHJ\\Script\\Rock.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:42:46.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\KHJ\\Script\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scenes\\KHJ\\Script\\PlayerController.cs",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAiwPEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:42:17.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Enemy\\EnemyAI.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Script\\Enemy\\EnemyAI.cs",
+              "ViewState": "AgIAAPUAAAAAAAAAAADwvwUBAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T10:42:17.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EnemyCtrl.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyCtrl.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Enemy\\EnemyCtrl.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyCtrl.cs",
+              "RelativeToolTip": "Assets\\Script\\Enemy\\EnemyCtrl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T10:41:47.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AttackCollider.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\AttackCollider.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\KHJ\\Script\\AttackCollider.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\AttackCollider.cs",
+              "RelativeToolTip": "Assets\\Scenes\\KHJ\\Script\\AttackCollider.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:43:06.154Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PlayerCtrlTest.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Player\\PlayerCtrlTest.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerCtrlTest.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Player\\PlayerCtrlTest.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\PlayerCtrlTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:41:42.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WallScript.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Map\\WallScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Map\\WallScript.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Map\\WallScript.cs",
+              "RelativeToolTip": "Assets\\Script\\Map\\WallScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:10:59.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Hand.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\Hand.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\KHJ\\Script\\Hand.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\Hand.cs",
+              "RelativeToolTip": "Assets\\Scenes\\KHJ\\Script\\Hand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:43:09.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OxygenPipe.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\OxygenPipe.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\KHJ\\Script\\OxygenPipe.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Scenes\\KHJ\\Script\\OxygenPipe.cs",
+              "RelativeToolTip": "Assets\\Scenes\\KHJ\\Script\\OxygenPipe.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T09:43:10.149Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 293,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EnemyFOV.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyFOV.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Enemy\\EnemyFOV.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyFOV.cs",
+              "RelativeToolTip": "Assets\\Script\\Enemy\\EnemyFOV.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T09:39:43.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnemyDamage.cs",
+              "DocumentMoniker": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyDamage.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Enemy\\EnemyDamage.cs",
+              "ToolTip": "C:\\Users\\sbsgame\\Desktop\\Gwangsan\\5_Project\\ProjectMine\\Assets\\Script\\Enemy\\EnemyDamage.cs",
+              "RelativeToolTip": "Assets\\Script\\Enemy\\EnemyDamage.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvyAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T10:42:11.076Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
