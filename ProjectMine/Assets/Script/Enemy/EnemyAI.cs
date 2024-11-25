@@ -72,6 +72,8 @@ public class EnemyAI : MonoBehaviour
 
     private bool getAttackTarget = false;
 
+    private int enemyTraceTime = 0;
+
 
     void Awake()
     {
@@ -149,32 +151,24 @@ public class EnemyAI : MonoBehaviour
             // 공격 사정거리 이내인 경우
             {
                 
-               // if (enemyFov.isViewPlayer())
-              //  { 
+              if (enemyFov.isViewPlayer())
+              { 
                     state = State.CHARGE;
                     //    // 여기에 기모으는 애니메이션
                     yield return new WaitForSeconds(2.0f);
                     state = State.ATTACK;
                     // 여기에 공격(돌진) 애니메이션
-                    //yield return new WaitForSeconds(2.0f);
-               // }
-                //else
-                   // state = State.TRACE;                             
+                    yield return new WaitForSeconds(1.0f);
+               }
+               else
+               {
+                  state = State.TRACE;                             
+               }
             }
             else if (enemyFov.isTracePlayer())
             {
-
                 state = State.TRACE;               
             }          
-            //// 추적 사정거리 이내인 경우
-            //else if (enemyCtrl.isHit1st == true && objectID == 1)
-            //{              
-            //   state = State.TRACE;                          
-            //}
-            //else if (enemyCtrl.isHit2nd == true && objectID == 2)
-            //{              
-            //   state = State.TRACE;
-            //}
             else
             {
                 state = State.PATROL;               
@@ -182,6 +176,7 @@ public class EnemyAI : MonoBehaviour
 
             if (!(enemyFov.isTracePlayer()))
             {
+                yield return new WaitForSeconds(3.0f);
                 state = State.PATROL;
             }
 
@@ -237,11 +232,11 @@ public class EnemyAI : MonoBehaviour
                     break;
 
                 case State.ATTACK:
-                    if(getAttackTarget == false)
-                    {
+                   //if(getAttackTarget == false)
+                   //{
                         moveAgent.attackTarget = playerTransform.position;
                         getAttackTarget = true;
-                    }
+                    //}
                     animator.SetBool(hashChage, false);
                     animator.SetBool(hashAttack, true);
                      PlaySound("RUSH");
@@ -254,7 +249,6 @@ public class EnemyAI : MonoBehaviour
                     animator.SetBool(hashAttack, false);
                     animator.SetBool(hashHit, true);
                     animator.SetBool(hashDead, false);
-                    yield return new WaitForSeconds(0.05f);
                     break;
                 case State.DIE:
                     //구현이 안되어있으니 일단 정지

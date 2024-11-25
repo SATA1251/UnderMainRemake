@@ -222,7 +222,6 @@ public class BossAi : MonoBehaviour
                     animator.SetBool(hashAttack, false);
                     animator.SetBool(hashMove, false);
                     animator.SetBool(hashDead, false);
-                    moveAgent.attackTarget = playerTransform.position;
                     break;
 
                 case State.MOVE:
