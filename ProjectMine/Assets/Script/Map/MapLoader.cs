@@ -3,6 +3,7 @@ using System.Collections.Generic;
 //using UnityEditor;
 //using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Pool;
 // using UnityEngine.UIElements;
 // using System.Threading;
 // using Unity.VisualScripting;
@@ -20,6 +21,8 @@ public class MapLoader : MonoBehaviour
     public GameObject wall2;
     public GameObject hardWall;
     public GameObject ceilBlock;
+
+    public IObjectPool<GameObject> poolMap;
 
     public GameObject startMonsterRoom;
     public GameObject monsterRoom;
@@ -411,17 +414,31 @@ public class MapLoader : MonoBehaviour
             int randomNum = Random.Range(1, 3);
             if (randomNum == 1 && objWall == wall1)
             {
-                wallArray[x, z, i-1] = Instantiate(wall1, new Vector3(plane.gameObject.transform.position.x - width+0.5f +x, plane.gameObject.transform.position.y +i-0.5f, plane.gameObject.transform.position.z - height+0.5f+z), Quaternion.identity);
+                var wallPool = ObjectPoolManager.instance.GetMapBox("Wall1");
+                wallPool.gameObject.transform.position = new Vector3(plane.gameObject.transform.position.x - width + 0.5f + x, plane.gameObject.transform.position.y + i - 0.5f, plane.gameObject.transform.position.z - height + 0.5f + z);
+                wallPool.gameObject.transform.rotation = Quaternion.identity;
+                wallArray[x, z, i - 1] = wallPool;
+                //wallArray[x, z, i-1] = Instantiate(wall1, new Vector3(plane.gameObject.transform.position.x - width+0.5f +x, plane.gameObject.transform.position.y +i-0.5f, plane.gameObject.transform.position.z - height+0.5f+z), Quaternion.identity);
 
             }
             else if (randomNum > 1 && objWall == wall1)
             {
-                wallArray[x, z, i-1] = Instantiate(wall2, new Vector3(plane.gameObject.transform.position.x - width+0.5f +x, plane.gameObject.transform.position.y +i-0.5f, plane.gameObject.transform.position.z - height+0.5f+z), Quaternion.identity);
+                // wall2 타입도 받을수있게 풀링 수정해야함
+               var wallPool = ObjectPoolManager.instance.GetMapBox("Wall2");
+                wallPool.gameObject.transform.position = new Vector3(plane.gameObject.transform.position.x - width + 0.5f + x, plane.gameObject.transform.position.y + i - 0.5f, plane.gameObject.transform.position.z - height + 0.5f + z);
+               wallPool.gameObject.transform.rotation = Quaternion.identity;
+               wallArray[x, z, i - 1] = wallPool;
+                //wallArray[x, z, i-1] = Instantiate(wall2, new Vector3(plane.gameObject.transform.position.x - width+0.5f +x, plane.gameObject.transform.position.y +i-0.5f, plane.gameObject.transform.position.z - height+0.5f+z), Quaternion.identity);
 
             }
             else if (objWall != wall1)
             {
-                wallArray[x, z, i-1] = Instantiate(objWall, new Vector3(plane.gameObject.transform.position.x - width+0.5f +x, plane.gameObject.transform.position.y +i-0.5f, plane.gameObject.transform.position.z - height+0.5f+z), Quaternion.identity);
+                //마찬가지
+                var wallPool = ObjectPoolManager.instance.GetMapBox("HardWall");
+                wallPool.gameObject.transform.position = new Vector3(plane.gameObject.transform.position.x - width + 0.5f + x, plane.gameObject.transform.position.y + i - 0.5f, plane.gameObject.transform.position.z - height + 0.5f + z);
+                wallPool.gameObject.transform.rotation = Quaternion.identity;
+                wallArray[x, z, i - 1] = wallPool;
+                //wallArray[x, z, i-1] = Instantiate(objWall, new Vector3(plane.gameObject.transform.position.x - width+0.5f +x, plane.gameObject.transform.position.y +i-0.5f, plane.gameObject.transform.position.z - height+0.5f+z), Quaternion.identity);
 
             }
         }

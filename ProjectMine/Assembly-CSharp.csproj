@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scenes\KHJ\Script\CalcAbility.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Script\UIScripts\BuffIconScript.cs" />
+    <Compile Include="Assets\Script\Map\NewBehaviourScript1.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Script\UIScripts\O2BarScript.cs" />
@@ -142,6 +143,8 @@
     <Compile Include="Assets\Script\Map\PotalScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Script\UIScripts\UIBarText.cs" />
+    <Compile Include="Assets\Script\Map\ObjectPoolManager.cs" />
+    <Compile Include="Assets\Script\Map\PoolAble.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
