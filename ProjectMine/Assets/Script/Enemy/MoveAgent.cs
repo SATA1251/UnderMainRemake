@@ -42,6 +42,11 @@ public class MoveAgent : MonoBehaviour
     // 회전시 속도 조절용 변수 
     private float damping = 1.0f;
 
+    // 벽 태그 설정
+
+    public string wallTag = "Wall";
+    public string hardWallTag = "HardWall";
+
     public float speed
     {
         get { return agent.velocity.magnitude; }
@@ -68,7 +73,13 @@ public class MoveAgent : MonoBehaviour
     {
         get { return _traceTarget; }
         set 
-        {    _traceTarget = value;
+        {   
+            if(IsWallBetween(transform.position, value))
+            {
+                Debug.Log("벽 충돌");
+                return;
+            }
+            _traceTarget = value;
             agent.speed = traceSpeed;
             damping = 7.0f;
             TraceTarget(_traceTarget);
@@ -89,9 +100,6 @@ public class MoveAgent : MonoBehaviour
         }
     }
 
-
-
-
     // 보스 던지기 공격의 대상의 위치를 판단하는 변수
     private Vector3 _stoneAttackTarget;
     public Vector3 stoneAttackTarget
@@ -106,7 +114,18 @@ public class MoveAgent : MonoBehaviour
         }
     }
 
-
+    private bool IsWallBetween(Vector3 start, Vector3 end)
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(start, (end - start).normalized, out hit, Vector3.Distance(start, end)))
+        {
+            if(hit.collider.CompareTag(wallTag) || hit.collider.CompareTag(hardWallTag))
+            {
+                return true; 
+            }
+        }
+       return false;
+    }
     // Start is called before the first frame update
     void Start()
     {

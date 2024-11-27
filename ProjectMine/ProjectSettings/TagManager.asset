@@ -17,6 +17,7 @@ TagManager:
   - GemS
   - GemA
   - GemB
+  - HardWall
   layers:
   - Default
   - TransparentFX
