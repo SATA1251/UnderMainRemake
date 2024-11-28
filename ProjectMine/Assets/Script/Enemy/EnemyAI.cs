@@ -74,7 +74,6 @@ public class EnemyAI : MonoBehaviour
 
     private int enemyTraceTime = 0;
 
-
     void Awake()
     {
         // 플레이어 게임 오브젝트 추출 // 유니티 내에서 따로 넣을거면 불필요할듯
@@ -158,7 +157,7 @@ public class EnemyAI : MonoBehaviour
                     yield return new WaitForSeconds(2.0f);
                     state = State.ATTACK;
                     // 여기에 공격(돌진) 애니메이션
-                    yield return new WaitForSeconds(1.0f);
+                    yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
                }
                else
                {
@@ -189,6 +188,9 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Action()
     {
         float dist = Vector3.Distance(playerTransform.position, enemyTransform.position);
+       
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        
         while (!isDie)
         {
             yield return ws;
@@ -249,6 +251,7 @@ public class EnemyAI : MonoBehaviour
                     animator.SetBool(hashAttack, false);
                     animator.SetBool(hashHit, true);
                     animator.SetBool(hashDead, false);
+                    yield return new WaitForSeconds(0.15f); // 실제 애니메이션 시간을 체크해서 상수로 넣었음, 당장은 괜찮은데 이쁘지않다
                     break;
                 case State.DIE:
                     //구현이 안되어있으니 일단 정지
@@ -259,7 +262,7 @@ public class EnemyAI : MonoBehaviour
                     animator.SetBool(hashHit, false);
                     animator.SetBool(hashDead, true);
                     PlaySound("DEAD");
-                    yield return new WaitForSeconds(0.8f);
+                    yield return new WaitForSeconds(stateInfo.length - stateInfo.normalizedTime * stateInfo.length);
                     Destroy(gameObject);
                     break;
             }

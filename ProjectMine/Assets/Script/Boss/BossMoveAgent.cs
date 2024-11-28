@@ -79,7 +79,7 @@ public class BossMoveAgent : MonoBehaviour
         // 적 캐릭터가 이동중일때만 회전
         if (agent.isStopped == false)
         {
-        // 가야할 방향 벡터를 쿼터니언 타입의 각도로 변환
+            // 가야할 방향 벡터를 쿼터니언 타입의 각도로 변환
 
             Quaternion rot = Quaternion.LookRotation(agent.desiredVelocity);
             // 보간 함수를 사용해 점진적으로 회전시킴

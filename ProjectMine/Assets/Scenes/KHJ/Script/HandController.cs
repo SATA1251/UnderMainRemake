@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Unity.Burst.CompilerServices;
+using Unity.EditorCoroutines.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
@@ -69,6 +70,8 @@ public class HandController : MonoBehaviour
     private Collision testColl;
 
     private bool isPlayingSound;
+
+    private bool hasAttacked = false;
 
 
 
@@ -180,6 +183,7 @@ public class HandController : MonoBehaviour
 
         yield return new WaitForSeconds(currentHand.attackDelay - currentHand.attackDelayA - currentHand.attackDelayB);
         isAttack = false;
+        hasAttacked = false;
     }
     private void PlaySoundOnce(AudioClip clip)
     {
@@ -198,18 +202,21 @@ public class HandController : MonoBehaviour
 
 
         foreach (Collider collider in hitColliders)
-        {
+        {            
             // 감지된 오브젝트에 대한 처리
-            if (collider.CompareTag("Enemy"))
+            if (collider.CompareTag("Enemy") && hasAttacked == false)
             {
                 collider.GetComponent<EnemyDamage>().EnemyHit();
                 audioSrc.PlayOneShot(moleHit);
+                hasAttacked = true;
+                Debug.Log("몬스터에 데미지가 들어감");
 
             }
-            else if (collider.CompareTag("Enemy2"))
+            else if (collider.CompareTag("Enemy2") && hasAttacked == false)
             {
                 collider.GetComponent<EnemyDamage>().EnemyHit2();
                 audioSrc.PlayOneShot(moleHit);
+                hasAttacked = true;
 
             }
             else if (collider.CompareTag("Wall"))
@@ -252,7 +259,7 @@ public class HandController : MonoBehaviour
             if (isDrain)
             {
                 if (collider.CompareTag("Enemy") || collider.CompareTag("Enemy2") || collider.CompareTag("Boss"))
-                {                   
+                {
                     playerController.HP += playerController.MaxHP * 0.1f;
 
                 }
@@ -260,12 +267,10 @@ public class HandController : MonoBehaviour
                 {
                     playerController.HP += playerController.MaxHP * 0.05f;
                 }
-            }         
+            }            
         }
 
     }
-
-
 
 
 

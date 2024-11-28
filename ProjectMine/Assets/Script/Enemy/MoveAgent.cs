@@ -93,6 +93,11 @@ public class MoveAgent : MonoBehaviour
         get { return _attackTarget; }
         set
         {
+            if (IsWallBetween(transform.position, value))
+            {
+                Debug.Log("벽 충돌");
+                return;
+            }
             _attackTarget = value;
             agent.speed = attackSpeed;
             damping = 7.0f;
@@ -119,8 +124,10 @@ public class MoveAgent : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(start, (end - start).normalized, out hit, Vector3.Distance(start, end)))
         {
+            Debug.Log("진입 성공");
             if(hit.collider.CompareTag(wallTag) || hit.collider.CompareTag(hardWallTag))
             {
+                Debug.Log("체크성공");
                 return true; 
             }
         }
