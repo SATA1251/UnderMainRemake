@@ -26,7 +26,7 @@ public class PotalScript : MonoBehaviour
     {
         if (collision.collider.tag == playerTag)
         {
-            gamePlayer.transform.localPosition = arrivalTransform.position;
+            gamePlayer.transform.localPosition = arrivalTransform.position;         
         }
 
     }
