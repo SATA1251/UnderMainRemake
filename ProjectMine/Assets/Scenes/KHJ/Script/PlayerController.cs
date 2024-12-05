@@ -76,6 +76,12 @@ public class PlayerController : MonoBehaviour
     public float dodgeTime;         // 0초부터 시작해서 점점 증가한다
     public float dodgeTimeCheck;    // 이게 회피 지속시간(지금은 0.3초)  // 지속시간 바꿀려면 이거만 바꾸면됨
 
+    // 미니맵 구현 변수
+    public Texture2D fogTexture;
+    public int textureSize = 512;
+    public int viewRadius = 10;
+
+    private Color[] fogColors;
 
     // Rigidbody 컴포넌트 할당
     void Start()
@@ -93,6 +99,24 @@ public class PlayerController : MonoBehaviour
         oresSamount = 0;
         oresAamount = 0;
         oresBamount = 0;
+
+        fogTexture = new Texture2D(textureSize, textureSize);
+        fogColors = new Color[textureSize * textureSize];
+
+        for (int i = 0; i < fogColors.Length; i++)
+        {
+            fogColors[i] = Color.black;
+        }
+
+        fogTexture.SetPixels(fogColors);
+        fogTexture.Apply();
+
+        Renderer fogRenderer = FindAnyObjectByType<Renderer>();
+        if(fogRenderer != null)
+        {
+            Material fogMaterial = fogRenderer.material;
+            fogMaterial.SetTexture("_FogTexture", fogTexture);
+        }
     }
     private void PlaySound(string action)
     {
@@ -114,6 +138,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Dodge();                 // 회피
+        Vector3 playerWorldPos = transform.position;
+
+        Vector2Int playerTexPos = WorldToTextureCoord(playerWorldPos);
+
+        UpdateFog(playerTexPos, viewRadius);
 
         MouseControl();
         CalculateOres();
@@ -165,6 +194,26 @@ public class PlayerController : MonoBehaviour
         }
         BuffOn();
 
+    }
+
+    Vector2Int WorldToTextureCoord(Vector3 worldPos)
+    {
+        // 월드 좌표를 텍스처 좌표로 변환
+        float x = Mathf.InverseLerp(-50f, 50f, worldPos.x) * textureSize; // 월드 범위 (-50, 50) 예시
+        float y = Mathf.InverseLerp(-50f, 50f, worldPos.z) * textureSize;
+        return new Vector2Int(Mathf.FloorToInt(x), Mathf.FloorToInt(y));
+    }
+
+    void UpdateFog(Vector2Int playerPos, int radius)
+    {
+        for(int y = - radius; y <= radius; y++)
+        {
+            for(int x = -radius; x <= radius; x++)
+            {
+                // 안개 걷히는것을 실시간으로 계산
+                // 추가 예정
+            }
+        }
     }
 
     //총 광석 갯수 계산
