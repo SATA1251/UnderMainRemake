@@ -15310,7 +15310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f7a631ab98f972b48abba9965555086d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af4022d66583ced4a9c26d784cad0c43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17541,6 +17541,7 @@ GameObject:
   - component: {fileID: 1974201130}
   - component: {fileID: 1974201136}
   - component: {fileID: 1974201137}
+  - component: {fileID: 1974201138}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -17876,6 +17877,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1974201138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974201127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2764482ffcc6b443a7f80f6b592b4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogTexture: {fileID: 2800000, guid: 3044069dc38088040ab603060d7cde46, type: 3}
+  textureSize: 512
+  viewRadius: 10
 --- !u!1 &2034627306
 GameObject:
   m_ObjectHideFlags: 0
