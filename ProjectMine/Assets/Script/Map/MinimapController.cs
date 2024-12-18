@@ -29,7 +29,7 @@ public class MinimapController : MonoBehaviour
     // 미니맵 카메라가 맵 중앙으로 이동 할 때의 position (0.2, 0.015, 0.2)
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L)) // 테스트용 getket
+        if(Input.GetKeyDown(KeyCode.Q)) // 테스트용 getket
         {
             if(_isMinimapOpen == false)
             {

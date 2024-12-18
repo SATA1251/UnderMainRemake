@@ -42,21 +42,6 @@ public class FogController : MonoBehaviour
 
         Vector2Int texCoord = WorldToTextureCoord(playerWorldPos);
 
-        //int radius = 10; // 밝히는 영역 반지름
-        //for (int x = -radius; x <= radius; x++)
-        //{
-        //    for (int y = -radius; y <= radius; y++)
-        //    {
-        //        int px = Mathf.Clamp(texCoord.x + x, 0, textureSize - 1);
-        //        int py = Mathf.Clamp(texCoord.y + y, 0, textureSize - 1);
-        //        fogColors[py * textureSize + px] = Color.clear; // 탐험한 부분 투명 처리
-        //    }
-        //}
-
-        //어둠 텍스처 갱신
-        //fogTexture.SetPixels(fogColors);
-        //fogTexture.Apply();
-
         UpdateFog(texCoord, viewRadius);
     }
 
