@@ -8,7 +8,7 @@ public class FogController : MonoBehaviour
     public Camera minimapCamera;
     public Texture2D fogTexture; //어둠 텍스쳐
     public int textureSize = 512;
-    public int viewRadius = 50;
+    public int viewRadius = 20;
     public Vector3 playerWorldPos;
 
     private Color[] fogColors;
