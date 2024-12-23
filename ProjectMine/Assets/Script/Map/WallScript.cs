@@ -8,10 +8,20 @@ public class WallScript : PoolAble
     [SerializeField]
     public GameObject planeData;
 
+    public GameObject _hitParticleObject;
+
+    public Transform _hitParticleTransform;
+
     public IObjectPool<GameObject> Pool { get; set; }
+
+    public void Start()
+    {
+        _hitParticleObject = GameObject.Find("BlockHit");
+    }
     public void DestroyWall()
     {
         ReleaseObject();
+        SpawnParticle();
         //Destroy(gameObject);        
         //DestroyWallLine(0,0);
     }
@@ -24,4 +34,16 @@ public class WallScript : PoolAble
         }
     }
 
+    public void SpawnParticle()
+    {
+        if (_hitParticleObject != null)
+        {
+            Vector3 position = transform.position;
+            Quaternion rotation = Quaternion.identity;
+
+            GameObject particle = Instantiate(_hitParticleObject, position, rotation);
+
+            Destroy(particle, particle.GetComponent<ParticleSystem>().main.duration);
+        }
+    }
 }

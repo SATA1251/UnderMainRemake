@@ -19,15 +19,34 @@ public class EnemyDamage : MonoBehaviour
     // Start is called before the first frame update
 
     private EnemyCtrl enemyCtrl;
+
+    public GameObject _hitParticleObject;
+    public Transform _spawnhitParticle;
     void Start()
     {
         handController = GameObject.Find("Holder").GetComponent<HandController>();
         hand = GameObject.Find("Hand").GetComponent<Hand>();
         enemyCtrl = GameObject.Find("EnemyCtrl").GetComponent<EnemyCtrl>();
+        _hitParticleObject = GameObject.Find("BasicHit");     
+    }
+
+    public void SpawnParticle()
+    {
+        if(_hitParticleObject != null)
+        {
+            Vector3 position = transform.position;
+            position.y = transform.position.y + 2;
+            Quaternion rotation = Quaternion.identity;
+
+            GameObject particle = Instantiate(_hitParticleObject, position, rotation);
+
+            Destroy(particle, particle.GetComponent<ParticleSystem>().main.duration); 
+        }
     }
 
     public void EnemyHit()
     {
+        SpawnParticle();
         hp -= hand.applyDamage;
         enemyCtrl.isHit1st = true;
         GetComponent<EnemyAI>().state = EnemyAI.State.HIT;
@@ -39,6 +58,7 @@ public class EnemyDamage : MonoBehaviour
     }
     public void EnemyHit2()
     {
+        SpawnParticle();
         hp -= hand.applyDamage;
         enemyCtrl.isHit2nd = true;
         GetComponent<EnemyAI>().state = EnemyAI.State.HIT;
