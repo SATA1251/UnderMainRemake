@@ -11,6 +11,9 @@ public class WallScript : PoolAble
     public GameObject _player;
 
     public GameObject _hitParticleObject;
+    public GameObject _dropAmountParticleS;
+    public GameObject _dropAmountParticleA;
+    public GameObject _dropAmountParticleB;
 
     public Transform _hitParticleTransform;
 
@@ -23,15 +26,18 @@ public class WallScript : PoolAble
     public void Start()
     {
         _hitParticleObject = GameObject.Find("BlockHit");
+        _dropAmountParticleS = GameObject.Find("GemDropS");
+        _dropAmountParticleA = GameObject.Find("GemDropA");
+        _dropAmountParticleB = GameObject.Find("GemDropB");
         _player = GameObject.Find("Player");
-        _dropAmountB = 5f;
-        _dropAmountS = 10f;
-        _dropAmountA = 20f;
+        _dropAmountS = 5f;
+        _dropAmountA = 10f;
+        _dropAmountB = 20f;
     }
     public void DestroyWall()
     {
         ReleaseObject();
-        SpawnParticle();
+        SpawnParticle(_hitParticleObject);
         DropAmount();
         //Destroy(gameObject);        
         //DestroyWallLine(0,0);
@@ -45,14 +51,14 @@ public class WallScript : PoolAble
         }
     }
 
-    public void SpawnParticle()
+    public void SpawnParticle(GameObject Particle)
     {
-        if (_hitParticleObject != null)
+        if (Particle != null)
         {
             Vector3 position = transform.position;
             Quaternion rotation = Quaternion.identity;
 
-            GameObject particle = Instantiate(_hitParticleObject, position, rotation);
+            GameObject particle = Instantiate(Particle, position, rotation);
 
             Destroy(particle, particle.GetComponent<ParticleSystem>().main.duration);
         }
@@ -65,14 +71,17 @@ public class WallScript : PoolAble
         if(randomValue <= _dropAmountS)
         {
             _player.GetComponent<PlayerController>().oresSamount++;
+            SpawnParticle(_dropAmountParticleS);
         }
         else if(randomValue <= _dropAmountA)
         {
             _player.GetComponent<PlayerController>().oresAamount++;
+            SpawnParticle(_dropAmountParticleA);
         }
         else if (randomValue <= _dropAmountB)
         {
             _player.GetComponent<PlayerController>().oresBamount++;
+            SpawnParticle(_dropAmountParticleB);
         }
     }
 }

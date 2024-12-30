@@ -99,6 +99,7 @@ public class UIChooseAbility : MonoBehaviour
         uc.paybackOres();                           //업그레이드 완료 여부에 따라 투입한 광물을 돌려주는걸 처리하고
         uc.CloseUI();                               //UI를 꺼버려
         uc.upgradeCompleted = false;                //다시 업그레이드 박스를 열 때는 아직 업그레이드가 안 된것으로 취급해야 하니까
+        uc.SetCurrentAbility();
 
         //다른 방법이 있을것 같은데 이젠 힘들어
         //선택이 완료되었을때 하이라이트 되었던 글씨체를 되돌려줌

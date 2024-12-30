@@ -8,9 +8,9 @@ public class ProbabilityText : MonoBehaviour
     [SerializeField] private Text thisText;
     [SerializeField] private UIController uc;
 
-    public int rateS = 10;    //S등급 기본확률
-    public int rateA = 20;    //A등급 기본확률
-    public int rateB = 70;    //B등급 기본확률
+    public int rateS = 3;    //S등급 기본확률
+    public int rateA = 10;    //A등급 기본확률
+    public int rateB = 87;    //B등급 기본확률
 
     [SerializeField] private bool acceptedS;
     [SerializeField] private bool acceptedA;
@@ -18,7 +18,7 @@ public class ProbabilityText : MonoBehaviour
 
     private void Start()
     {
-        thisText.text = "S등급  " + $"{10}" + "%\n" + "A등급  " + $"{20}" + "%\n" + "B등급  " + $"{70}" + "%";    //기본 확률
+        thisText.text = "S등급  " + $"{3}" + "%\n" + "A등급  " + $"{10}" + "%\n" + "B등급  " + $"{87}" + "%";    //기본 확률
     }
 
     // Update is called once per frame

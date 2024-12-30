@@ -34,7 +34,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     void Update()
     {
-        if (isInteractable && Input.GetKeyUp(interactionKey))       //상호작용한 거리에 있고 상호작용 키를 눌렀을 때
+        if (Input.GetKeyUp(interactionKey))       //상호작용한 거리에 있고 상호작용 키를 눌렀을 때
         { 
             if (uc != null) 
             {

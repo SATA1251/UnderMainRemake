@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatController : MonoBehaviour
@@ -158,7 +159,9 @@ public class StatController : MonoBehaviour
             case "ID0009":
                 Debug.Log("StatController 광물 마스터");
 
+                playerController.HP -= playerController.MaxHP / 2;
                 ///공격함수에서 처리하는거 같으니 거기서 대상의 Tag를 비교해서 처리하자
+                playerController.GetComponent<PlayerController>().oresBamount += 5;
 
                 break;
 

@@ -19,6 +19,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text txt2;
     [SerializeField] private Text txt3;
 
+    [SerializeField] private Text abilityText;
+
     public bool upgradeCompleted = false; //업그레이드를 완료했는지 여부   //광물넣고 업그레이드 안했을 때 이걸로 판별해서 페이백
 
     public int Samount = 0;               //업그레이드 기계에서 보일 S광물수량
@@ -93,6 +95,18 @@ public class UIController : MonoBehaviour
             txt1.text = "0";
             txt2.text = "0";
             txt3.text = "0";
+        }
+    }
+
+    public void SetCurrentAbility()
+    {
+        if(playerController.GetComponent<StatController>().currentAbility.abilityName != null)
+        {
+            abilityText.text = playerController.GetComponent<StatController>().currentAbility.abilityName;
+        }
+        else
+        {
+            abilityText.text = "능력 없음";
         }
     }
 }

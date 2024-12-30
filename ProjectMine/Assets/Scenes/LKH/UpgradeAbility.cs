@@ -186,7 +186,7 @@ public class UpgradeAbility : MonoBehaviour
         abilityOxygenPipe = generateAbilities("산소파이프 강화", "산소 최대량이 100 증가합니다. 산소 파이프를 사용 시 버프 지속 시간이 5분으로 늘어나며, 지속 시간 동안 공격력이 20, 치명타 피해가 20% 증가합니다.", "A", UpOxygenPipe, "ID0007");
 
         abilityHidden = generateAbilities("히든", "이 능력을 반드시 선택해야합니다. 선택 시 바로 보스방으로 순간이동 됩니다.", "B", HiddenAbil, "ID0008");
-        abilityMiningMaster = generateAbilities("광물 마스터", "광물 채취 시 산소를 소모하지 않습니다. 20% 확률로 광물을 2배로 얻습니다.", "B", MiningMaster, "ID0009");
+        abilityMiningMaster = generateAbilities("광물 마스터", "HP를 최대 체력에 절반 지불합니다. B급 광물을 즉시 5개 획득합니다.", "B", MiningMaster, "ID0009");
         abilityDodgeMaster = generateAbilities("회피 마스터", "회피 시 산소를 소모하지 않습니다. 회피 속도가 1.5배 증가합니다.", "B", DodgeMaster, "ID0010");
         abilityWindy = generateAbilities("바람돌이", "공격, 이동속도가 30% 증가합니다. 적에게 받는 피해가 20% 증가합니다.", "B", Windy, "ID0011");
         abilityApnea = generateAbilities("무호흡", "최대 산소량이 60 감소하고 최대량만큼 회복합니다. 공격력과 공격속도가 1.5배가 됩니다.", "B", Apnea, "ID0012");

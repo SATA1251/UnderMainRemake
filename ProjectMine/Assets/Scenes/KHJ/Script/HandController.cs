@@ -73,7 +73,9 @@ public class HandController : MonoBehaviour
 
     private bool hasAttacked = false;
 
-
+    // 보스 전용 파티클
+    public GameObject _bossHitParticle;
+    public GameObject _bossHitParticleSpown;
 
     void Start()
     {
@@ -92,6 +94,9 @@ public class HandController : MonoBehaviour
         wallScript = GameObject.FindGameObjectWithTag("Wall").GetComponent<WallScript>();
         // 공격 애니메이션 속도(배율)
         attackAnimSpeed = 1.0f;         /// 이거 바꾸면 됨
+
+        _bossHitParticle = GameObject.Find("BasicHit");
+        _bossHitParticleSpown = GameObject.Find("HitParticleSpown");
     }
 
 
@@ -110,9 +115,6 @@ public class HandController : MonoBehaviour
             // 공속 조절하는 함수(일단 주석 처리해놈)
             currentHand.anim.SetFloat("AttackSpeed", attackAnimSpeed);
         }
-
-
-
     }
 
     private void PlaySound(string action)
@@ -230,7 +232,7 @@ public class HandController : MonoBehaviour
             else if (collider.CompareTag("Boss"))
             {
                 collider.GetComponent<EnemyDamage>().BossHit();
-
+                SpawnParticle(_bossHitParticle);
                 audioSrc.PlayOneShot(wallHit);
 
             }
@@ -372,6 +374,18 @@ public class HandController : MonoBehaviour
         else
         {
             currentHand.applyDamage = currentHand.damage;
+        }
+    }
+    public void SpawnParticle(GameObject Particle)
+    {
+        if (Particle != null)
+        {
+            Vector3 position = _bossHitParticleSpown.transform.position;
+            Quaternion rotation = Quaternion.identity;
+
+            GameObject particle = Instantiate(Particle, position, rotation);
+
+            Destroy(particle, particle.GetComponent<ParticleSystem>().main.duration);
         }
     }
 
