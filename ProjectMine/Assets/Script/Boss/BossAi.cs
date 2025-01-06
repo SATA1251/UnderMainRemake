@@ -45,7 +45,7 @@ public class BossAi : MonoBehaviour
 
     private BossAttack bossAttack;
 
-    private BossStoneAttack stoneAttack;
+    public BossStoneAttack stoneAttack;
 
     // 애니메이터 컴포넌트를 저장할 변수
 
@@ -72,6 +72,9 @@ public class BossAi : MonoBehaviour
 
     private float hitCooldown = 1.0f; // 쿨다운 시간
     private float lastHitTime = 0.0f;
+
+    private bool normalAttackCooldown = false;
+    private float normalAttackCoolTime= 7.0f;
 
     void Awake()
     {
@@ -164,40 +167,21 @@ public class BossAi : MonoBehaviour
                 state = State.IDLE;
                 yield return new WaitForSeconds(1.0f);
             }
-            else if (dist <= attackDist)
+            else if (dist <= attackDist && !normalAttackCooldown)
             {
                 // 공격 트리거 활성화
                 state = State.NORMAL_ATTACK;
-                animator.SetTrigger("NormalAttack");
-               // yield return new WaitForSeconds(0.4f);
 
-                bossAttack.gameObject.SetActive(true);
-               
-              //  yield return new WaitForSeconds(0.15f);
+                normalAttackCooldown = true;
+                StartCoroutine(CoolsownRoutine());
 
-                // 공격 끝났을 때 다시 상태 변경
-                bossAttack.gameObject.SetActive(false);
-                state = State.IDLE;
-
-               // yield return new WaitForSeconds(2.0f);
             }
             else if (dist <= stoneAttackDist) //&& isStoneAttack == false)
             {
                 if (!isStoneAttack)
                 {
                     state = State.STONE_ATTACK;
-                    animator.SetTrigger("StoneAttack");
-                    yield return new WaitForSeconds(1.7f);
 
-                    stoneAttack.gameObject.SetActive(true);
-                    moveAgent.attackTarget = playerTransform.position;
-                    PlaySound("STONE_ATTACK");
-
-                    stoneAttack.StoneAttack();
-                    yield return new WaitForSeconds(0.6f);
-
-                    stoneAttack.gameObject.SetActive(false);
-                    stoneAttack.StoneAttackEnd();
 
                     yield return new WaitForSeconds(2.6f);
                     isStoneAttack = true;
@@ -207,6 +191,8 @@ public class BossAi : MonoBehaviour
             {
                 state = State.IDLE;
                 isStoneAttack = false;
+                //animator.SetBool("IsAttack", false);
+                //animator.SetBool("IsStoneAttack", false);
             }
             else
             {
@@ -230,50 +216,100 @@ public class BossAi : MonoBehaviour
             switch (state)
             {
                 case State.IDLE:
-                    animator.SetTrigger("Idle");
+                    moveAgent.Stop();
+                    TriggerHit("Idle");
                     break;
 
                 case State.MOVE:
-                    animator.SetTrigger("Move");
+                    TriggerHit("Move");
                     moveAgent.traceTarget = playerTransform.position;
                     PlaySound("MOVE");
                     break;
                 case State.NORMAL_ATTACK:
                     moveAgent.Stop();
-                    animator.SetTrigger("NormalAttack");
+                    TriggerHit("NormalAttack");
+                    //animator.SetTrigger("NormalAttack");
                     moveAgent.attackTarget = playerTransform.position;
                     PlaySound("NORMAL_ATTACK");
                     // 공격 애니메이션 종료 후 상태 변경
                     AnimatorStateInfo stateInfoHit = animator.GetCurrentAnimatorStateInfo(0);
-                    if (stateInfoHit.normalizedTime >= 1.0f)
+                    float currentTimeNormal = stateInfoHit.normalizedTime % 1.0f;
+
+                    if (currentTimeNormal >= 0.6f && currentTimeNormal <= 0.8f)
+                    {
+                        bossAttack.gameObject.SetActive(true);
+                    }
+                    else if (currentTimeNormal >= 0.9f)
+                    {
+                        bossAttack.gameObject.SetActive(false);
+                    }
+
+                    if (currentTimeNormal >= 1.0f)
                     {
                         Debug.Log("히트 애니메이션이 성공적으로 끝났습니다.");
                         state = State.IDLE;
+                       // animator.SetBool("IsAttack", false);
                     }
-                    break;
+                    break; 
 
                 case State.STONE_ATTACK:
                     moveAgent.Stop();
-                    animator.SetTrigger("StoneAttack");
+                    TriggerHit("StoneAttack");
+                   // animator.SetTrigger("StoneAttack");
                     moveAgent.attackTarget = playerTransform.position;
+                    PlaySound("STONE_ATTACK");
 
-                    // 특수 공격, 몇초에 한번 광역 팔공격 빔공격을 쓸지는 아직 미지수
+
+                    AnimatorStateInfo stateInfoStoneHit = animator.GetCurrentAnimatorStateInfo(0);
+                    float currentTimeStone = stateInfoStoneHit.normalizedTime % 1.0f; // 루프를 고려한 시간
+                    Debug.Log("normalizedTime: " + currentTimeStone);
+                    if(currentTimeStone <= 0.2f)
+                    {
+                        stoneAttack.GetPlayerPosition();
+                    }
+                    if (currentTimeStone >= 0.5f && currentTimeStone <= 0.7f)
+                    {
+                        stoneAttack.gameObject.SetActive(true);
+                        stoneAttack.StoneAttack();
+                        Debug.Log("돌 던지기 성공");
+                    }
+                    else
+                    {
+                        stoneAttack.gameObject.SetActive(false);
+                        stoneAttack.StoneAttackEnd();
+                    }
+
+
+
                     break;
                 case State.DIE:
-                   moveAgent.Stop();
-                animator.SetTrigger("Dead");
-                yield return new WaitForSeconds(4.8f);  // 죽음 처리 대기
-                isDie = true;
+                    moveAgent.Stop();
+                     TriggerHit("Dead");
+                     yield return new WaitForSeconds(4.8f);  // 죽음 처리 대기
+                     isDie = true;
 
-                if (isDie)
-                {
-                    GetComponent<Animator>().speed = 0.0f;
-                    PlaySound("DEAD");
-                }
+                        if (isDie)
+                        {
+                            GetComponent<Animator>().speed = 0.0f;
+                            PlaySound("DEAD");
+                        }
                     break;
             }
         }
     }
 
+    public void TriggerHit(string triggerName)
+    {
+        if (Time.time - lastHitTime > hitCooldown)
+        {
+            animator.SetTrigger(triggerName);
+            lastHitTime = Time.time;
+        }
+    }
 
+    private IEnumerator CoolsownRoutine()
+    {
+        yield return new WaitForSeconds(normalAttackCoolTime);
+        normalAttackCooldown = false;
+    }
 }

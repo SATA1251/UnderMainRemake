@@ -257,7 +257,8 @@ public class EnemyAI : MonoBehaviour
                     animator.SetBool(hashDead, false);
 
                     AnimatorStateInfo stateInfoHit = animator.GetCurrentAnimatorStateInfo(0);
-                    if (stateInfoHit.normalizedTime >= 1.0f)
+                    float currentTimeNormal = stateInfoHit.normalizedTime % 1.0f;
+                    if (currentTimeNormal >= 1.0f)
                     {
                         Debug.Log("히트 애니메이션이 성공적으로 끝났습니다.");
                         state = State.TRACE;

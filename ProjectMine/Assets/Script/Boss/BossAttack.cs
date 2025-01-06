@@ -16,7 +16,7 @@ public class BossAttack : MonoBehaviour
 
     void Start()
     {
-        //playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         bossAi = GameObject.Find("Prefab_Boss Variant").GetComponent<BossAi>();
 

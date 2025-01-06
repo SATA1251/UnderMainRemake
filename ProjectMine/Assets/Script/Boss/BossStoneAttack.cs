@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BossStoneAttack : MonoBehaviour
@@ -20,29 +21,36 @@ public class BossStoneAttack : MonoBehaviour
 
     private Transform playerTransform;  // 목표
 
-    float throwForce = 30.0f;
+    private Vector3 targetPosition;  // 목표
+
+    float throwForce = 20.0f;
 
     void Start()
     {
-        //playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         bossAi = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossAi>();
 
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
 
-        originalPosition = gameObject.transform.position;
+        originalPosition = GameObject.Find("RockSpownPosition").transform.position;
     }
 
     private void Update()
     {
     }
+
+    public void GetPlayerPosition()
+    {
+        targetPosition = playerTransform.position;
+    }
     public void StoneAttack()
     {
-        originalPosition = gameObject.transform.position;
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+       // originalPosition = gameObject.transform.position;    
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         if(rb != null)
         {
-            Vector3 throwDirection = (playerTransform.position - transform.position).normalized;
+            Vector3 throwDirection = (targetPosition - transform.position).normalized;
             rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
         }
 
