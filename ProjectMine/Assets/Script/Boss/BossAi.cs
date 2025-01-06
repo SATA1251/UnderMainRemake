@@ -70,7 +70,8 @@ public class BossAi : MonoBehaviour
 
     private AudioSource audioSouce;
 
-
+    private float hitCooldown = 1.0f; // 쿨다운 시간
+    private float lastHitTime = 0.0f;
 
     void Awake()
     {
@@ -165,31 +166,42 @@ public class BossAi : MonoBehaviour
             }
             else if (dist <= attackDist)
             {
-                //isAttack = true;
+                // 공격 트리거 활성화
                 state = State.NORMAL_ATTACK;
-                yield return new WaitForSeconds(0.4f);
-                bossAttack.gameObject.SetActive(true);
-                PlaySound("NORMAL_ATTACK");
-                yield return new WaitForSeconds(0.15f);
-                bossAttack.gameObject.SetActive(false);
-                isStoneAttack = true;
+                animator.SetTrigger("NormalAttack");
+               // yield return new WaitForSeconds(0.4f);
 
+                bossAttack.gameObject.SetActive(true);
+               
+              //  yield return new WaitForSeconds(0.15f);
+
+                // 공격 끝났을 때 다시 상태 변경
+                bossAttack.gameObject.SetActive(false);
+                state = State.IDLE;
+
+               // yield return new WaitForSeconds(2.0f);
             }
             else if (dist <= stoneAttackDist) //&& isStoneAttack == false)
             {
-                state = State.STONE_ATTACK;
-                yield return new WaitForSeconds(1.7f);
-                //animator.SetBool(hashStoneAttack, false);
-                //animator.SetBool(hashMove, true);
-                stoneAttack.gameObject.SetActive(true);
-                moveAgent.attackTarget = playerTransform.position;
-                PlaySound("STONE_ATTACK");
-                stoneAttack.StoneAttack();
-                yield return new WaitForSeconds(0.6f);
-                stoneAttack.gameObject.SetActive(false);
-                stoneAttack.StoneAttackEnd();
-              //  yield return new WaitForSeconds(2.6f);
-                isStoneAttack = true;
+                if (!isStoneAttack)
+                {
+                    state = State.STONE_ATTACK;
+                    animator.SetTrigger("StoneAttack");
+                    yield return new WaitForSeconds(1.7f);
+
+                    stoneAttack.gameObject.SetActive(true);
+                    moveAgent.attackTarget = playerTransform.position;
+                    PlaySound("STONE_ATTACK");
+
+                    stoneAttack.StoneAttack();
+                    yield return new WaitForSeconds(0.6f);
+
+                    stoneAttack.gameObject.SetActive(false);
+                    stoneAttack.StoneAttackEnd();
+
+                    yield return new WaitForSeconds(2.6f);
+                    isStoneAttack = true;
+                }
             }
             else if (isStoneAttack == true)
             {
@@ -218,58 +230,46 @@ public class BossAi : MonoBehaviour
             switch (state)
             {
                 case State.IDLE:
-                    animator.SetBool(hashStoneAttack, false);
-                    animator.SetBool(hashAttack, false);
-                    animator.SetBool(hashMove, false);
-                    animator.SetBool(hashDead, false);
+                    animator.SetTrigger("Idle");
                     break;
 
                 case State.MOVE:
-                    animator.SetBool(hashStoneAttack, false);
-                    animator.SetBool(hashAttack, false);
-                    animator.SetBool(hashMove, true);
-                    animator.SetBool(hashDead, false);
+                    animator.SetTrigger("Move");
                     moveAgent.traceTarget = playerTransform.position;
                     PlaySound("MOVE");
-                    //yield return new WaitForSeconds(1.0f);
                     break;
                 case State.NORMAL_ATTACK:
-                    // 노멀 공격
                     moveAgent.Stop();
-                    animator.SetBool(hashStoneAttack, false);
-                    animator.SetBool(hashAttack, true);
-                    animator.SetBool(hashMove, false);
-                    animator.SetBool(hashDead, false);
+                    animator.SetTrigger("NormalAttack");
                     moveAgent.attackTarget = playerTransform.position;
-                  
+                    PlaySound("NORMAL_ATTACK");
+                    // 공격 애니메이션 종료 후 상태 변경
+                    AnimatorStateInfo stateInfoHit = animator.GetCurrentAnimatorStateInfo(0);
+                    if (stateInfoHit.normalizedTime >= 1.0f)
+                    {
+                        Debug.Log("히트 애니메이션이 성공적으로 끝났습니다.");
+                        state = State.IDLE;
+                    }
                     break;
 
                 case State.STONE_ATTACK:
                     moveAgent.Stop();
-                    animator.SetBool(hashStoneAttack, true);
-                    animator.SetBool(hashAttack, false);
-                    animator.SetBool(hashMove, false);
-                    animator.SetBool(hashDead, false);
+                    animator.SetTrigger("StoneAttack");
                     moveAgent.attackTarget = playerTransform.position;
-                   
+
                     // 특수 공격, 몇초에 한번 광역 팔공격 빔공격을 쓸지는 아직 미지수
                     break;
                 case State.DIE:
-                    moveAgent.Stop();
-                    animator.SetBool(hashStoneAttack, false);
-                    animator.SetBool(hashAttack, false);
-                    animator.SetBool(hashMove, false);
-                    animator.SetBool(hashDead, true);
-                    //yield return new WaitForSeconds(3.8f);
-                    //gameObject.SetActive(false);
-                    //animator.StopPlayback();
-                    yield return new WaitForSeconds(4.8f);
-                    isDie = true;
-                    if (isDie == true)
-                    {
-                        GetComponent<Animator>().speed = 0.0f;
-                        PlaySound("DEAD");
-                    }
+                   moveAgent.Stop();
+                animator.SetTrigger("Dead");
+                yield return new WaitForSeconds(4.8f);  // 죽음 처리 대기
+                isDie = true;
+
+                if (isDie)
+                {
+                    GetComponent<Animator>().speed = 0.0f;
+                    PlaySound("DEAD");
+                }
                     break;
             }
         }

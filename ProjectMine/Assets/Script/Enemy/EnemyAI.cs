@@ -74,6 +74,10 @@ public class EnemyAI : MonoBehaviour
 
     private int enemyTraceTime = 0;
 
+    private float hitCooldown = 1.0f;
+
+    private float lastHitTime = 0.0f;
+
     void Awake()
     {
         // 플레이어 게임 오브젝트 추출 // 유니티 내에서 따로 넣을거면 불필요할듯
@@ -246,12 +250,19 @@ public class EnemyAI : MonoBehaviour
                 case State.HIT:
                     //구현이 안되어있으니 일단 정지
                     moveAgent.Stop();
+                    TriggerHit();
                     animator.SetBool(hashMove, false);
                     animator.SetBool(hashChage, false);
-                    animator.SetBool(hashAttack, false);
-                    animator.SetBool(hashHit, true);
+                    animator.SetBool(hashAttack, false);                  
                     animator.SetBool(hashDead, false);
-                    yield return new WaitForSeconds(0.15f); // 실제 애니메이션 시간을 체크해서 상수로 넣었음, 당장은 괜찮은데 이쁘지않다
+
+                    AnimatorStateInfo stateInfoHit = animator.GetCurrentAnimatorStateInfo(0);
+                    if (stateInfoHit.normalizedTime >= 1.0f)
+                    {
+                        Debug.Log("히트 애니메이션이 성공적으로 끝났습니다.");
+                        state = State.TRACE;
+                    }
+                    //yield return new WaitForSeconds(0.15f); // 실제 애니메이션 시간을 체크해서 상수로 넣었음, 당장은 괜찮은데 이쁘지않다
                     break;
                 case State.DIE:
                     //구현이 안되어있으니 일단 정지
@@ -266,6 +277,15 @@ public class EnemyAI : MonoBehaviour
                     Destroy(gameObject);
                     break;
             }
+        }
+    }
+
+    public void TriggerHit()
+    {
+        if (Time.time - lastHitTime > hitCooldown)
+        {
+            animator.SetTrigger("HitTrigger");
+            lastHitTime = Time.time;
         }
     }
 
