@@ -26,8 +26,10 @@ public class MapLoader : MonoBehaviour
 
     public GameObject startMonsterRoom;
     public GameObject monsterRoom;
+    public GameObject monsterRoom2;
     public GameObject upgradeRoom;
     public GameObject gemRoom;
+    public GameObject gemRoom2;
     public GameObject bossRoom;
     public GameObject gemRoomObject1;
     public GameObject gemRoomObject2;
@@ -44,13 +46,14 @@ public class MapLoader : MonoBehaviour
     private Transform playerTransform;
     private Transform mobTransform1;
     private Transform mobTransform2;
+    private Transform mobTransform3;
 
     const int width = 50;
     const int height = 50;
     int roomX;
     int roomZ;
-    int[] roomXArray = new int[4];
-    int[] roomZArray = new int[4];
+    int[] roomXArray = new int[5];
+    int[] roomZArray = new int[5];
     int roomCreateCount = 0;
     int roomSizeX = 20;
     int roomSizeZ = 20;
@@ -61,6 +64,7 @@ public class MapLoader : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         mobTransform1 = GameObject.Find("EnemyGroup_1").GetComponent<Transform>();
         mobTransform2 = GameObject.Find("EnemyGroup_2").GetComponent<Transform>();
+        mobTransform3 = GameObject.Find("EnemyGroup_3").GetComponent<Transform>();
 
         // 방 배열 설정
         roomArray[0] = startMonsterRoom;
@@ -273,6 +277,16 @@ public class MapLoader : MonoBehaviour
             Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width +roomX+7, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height+roomZ+7), Quaternion.identity);
             gemRoomObject2.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width*3/2 +roomX-roomSizeX-2, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height*3/2+roomZ-roomSizeZ+1));
         }
+        //else if (roomArray[roomCreateCount] == gemRoom2)
+        //{
+        //    Instantiate(gemS, new Vector3(plane.gameObject.transform.position.x - width + roomX, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 3), Quaternion.identity);
+        //    Instantiate(gemA, new Vector3(plane.gameObject.transform.position.x - width + roomX + 7, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 2), Quaternion.identity);
+        //    Instantiate(gemA, new Vector3(plane.gameObject.transform.position.x - width + roomX + 1, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ - 3), Quaternion.identity);
+        //    Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width + roomX - 3, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 6), Quaternion.identity);
+        //    Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width + roomX - 6, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ - 5), Quaternion.identity);
+        //    Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width + roomX + 7, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 7), Quaternion.identity);
+        //    gemRoomObject2.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX - 2, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ + 1));
+        //}
 
 
         roomCreateCount++;

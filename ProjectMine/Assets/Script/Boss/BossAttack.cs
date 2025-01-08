@@ -23,9 +23,9 @@ public class BossAttack : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
-        if (collision.collider.tag == playerTag && bossAi.state == BossAi.State.NORMAL_ATTACK)
+        if (collision.CompareTag(playerTag) && bossAi.state == BossAi.State.NORMAL_ATTACK)
         {
             playerController.BeAttackedBossNormal();  // 엔진 안에서 데미지 조절 => EnemtDamage 에서 조절
             //플레이어와 몬스터가 충돌했고 몬스터가 공격 상태일 경우 플레이어의 체력을 감소한다

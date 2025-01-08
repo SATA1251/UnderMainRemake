@@ -74,7 +74,11 @@ public class BossAi : MonoBehaviour
     private float lastHitTime = 0.0f;
 
     public bool normalAttackCooldown = false;
-    private float normalAttackCoolTime= 7.0f;
+    private float normalAttackCoolTime= 2.0f;
+
+    public bool normalAttackTrace = false;
+
+    public bool stoneAttackCooldown = false;
 
     void Awake()
     {
@@ -191,49 +195,25 @@ public class BossAi : MonoBehaviour
                 yield return new WaitForSeconds(1.0f);
             }
             else
-            {
-                // 랜덤으로 공격 선택
-                int randomAttack = Random.Range(0, 2); // 0: NORMAL_ATTACK, 1: STONE_ATTACK
-
-                if (randomAttack == 0) // 일반 공격
-                {
-                    if (dist <= attackDist )//&& !normalAttackCooldown) // 사거리 안이면 공격
+            {          
+                
+                    if (dist > attackDist) // 사거리 밖이면 이동 후 공격
+                    {
+                        state = State.MOVE;                                 
+                    }
+                    else if (dist <= attackDist)//&& !normalAttackCooldown) // 사거리 안이면 공격
                     {
                         state = State.NORMAL_ATTACK;
-                        //StartCoroutine(CoolsownRoutine()); // 1초 쿨타임
-                    }
-                    else if (dist > attackDist) // 사거리 밖이면 이동 후 공격
-                    {
-                        state = State.MOVE;
-
-                        while (Vector3.Distance(playerTransform.position, bossTransform.position) > attackDist)
-                        {
-                            yield return null; // 한 프레임 대기
-                        }
-
-                        state = State.NORMAL_ATTACK;
-                        //StartCoroutine(CoolsownRoutine()); // 1초 쿨타임
-                    }
-                }
-                else if (randomAttack == 1) // 스톤 공격
-                {
-                    if (dist <= stoneAttackDist)// && !isStoneAttack) // 스톤 공격 사거리 안이면 공격
+                        CoolsownRoutine();
+                     }         
+                    
+                    if (dist <= stoneAttackDist && !stoneAttackCooldown) // 스톤 공격 사거리 안이면 공격
                     {
                         state = State.STONE_ATTACK;
-                        yield return new WaitForSeconds(2.6f); // 스톤 공격 애니메이션 시간
-                        //isStoneAttack = true;
-                    }
-                }
+                        yield return new WaitForSeconds(1.0f); // 스톤 공격 애니메이션 시간
+                                                               //isStoneAttack = true;
+                    } 
             }
-
-           //if (isStoneAttack)
-           //{
-           //    state = State.IDLE;
-           //    isStoneAttack = false;
-           //    yield return new WaitForSeconds(2.6f);
-           //}
-
-
 
             //0.3초 동안 대기하는중에는 제어권을 양보?
             yield return ws;
@@ -253,6 +233,9 @@ public class BossAi : MonoBehaviour
             {
                 case State.IDLE:
                     moveAgent.Stop();
+                    animator.SetBool("IsStoneAttack", false);
+                    animator.SetBool("IsAttack", false);
+                    animator.SetBool("IsMove", false);
                     TriggerHit("Idle");
                     break;
 
@@ -261,17 +244,18 @@ public class BossAi : MonoBehaviour
                     animator.SetBool("IsAttack", false);
                     animator.SetBool("IsStoneAttack", false);
                     moveAgent.traceTarget = playerTransform.position;
+                    normalAttackCooldown = false;
                     PlaySound("MOVE");
                     break;
                 case State.NORMAL_ATTACK:
                     moveAgent.Stop();
-                    //TriggerHit("NormalAttack");
 
                     animator.SetBool("IsAttack", true);
                     animator.SetBool("IsStoneAttack", false);
-                    //animator.SetTrigger("NormalAttack");
+                    animator.SetBool("IsMove", false);
                     moveAgent.attackTarget = playerTransform.position;
-                   
+
+
                     // 공격 애니메이션 종료 후 상태 변경
                     AnimatorStateInfo stateInfoHit = animator.GetCurrentAnimatorStateInfo(0);
                     float currentTimeNormal = stateInfoHit.normalizedTime % 1.0f;
@@ -281,19 +265,17 @@ public class BossAi : MonoBehaviour
                         bossAttack.gameObject.SetActive(true);
                         PlaySound("NORMAL_ATTACK");
                     }
-                    else if (currentTimeNormal >= 0.9f)
+                    else if (currentTimeNormal >= 0.8f)
                     {
                         bossAttack.gameObject.SetActive(false);
-                    }
-
-                    if (currentTimeNormal >= 1.0f)
-                    {
                         Debug.Log("히트 애니메이션이 성공적으로 끝났습니다.");
-                        state = State.IDLE;
                         // animator.SetBool("IsAttack", false);
-                        CoolsownRoutine();
+                       // CoolsownRoutine();
+                        normalAttackTrace = true;
+                        stoneAttackCooldown = false;
+                        state = State.IDLE;
                     }
-                    break; 
+                    break;
 
                 case State.STONE_ATTACK:
                     moveAgent.Stop();
@@ -301,6 +283,7 @@ public class BossAi : MonoBehaviour
                     // animator.SetTrigger("StoneAttack
                     animator.SetBool("IsStoneAttack", true);
                     animator.SetBool("IsAttack", false);
+                    animator.SetBool("IsMove", false);
                     moveAgent.attackTarget = playerTransform.position;                
 
                     AnimatorStateInfo stateInfoStoneHit = animator.GetCurrentAnimatorStateInfo(0);
@@ -308,8 +291,9 @@ public class BossAi : MonoBehaviour
                     Debug.Log("normalizedTime: " + currentTimeStone);
                     if(currentTimeStone <= 0.2f)
                     {
-                        stoneAttack.GetPlayerPosition();
+                        stoneAttack.GetPlayerPosition(playerTransform.position); // 오브젝트가 꺼져있을 때 가져오려 해서 문제가 생긴다
                     }
+
                     if (currentTimeStone >= 0.5f && currentTimeStone <= 0.7f)
                     {
                         PlaySound("STONE_ATTACK");
@@ -317,14 +301,13 @@ public class BossAi : MonoBehaviour
                         stoneAttack.StoneAttack();
                         Debug.Log("돌 던지기 성공");
                     }
-                    else
+                    else if(currentTimeStone >= 0.9f)
                     {
-                        state = State.IDLE;
-                        stoneAttack.gameObject.SetActive(false);
+                        stoneAttackCooldown = true;
                         stoneAttack.StoneAttackEnd();
+                        stoneAttack.gameObject.SetActive(false);
+                        state = State.IDLE;
                     }
-
-
 
                     break;
                 case State.DIE:

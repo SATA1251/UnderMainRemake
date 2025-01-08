@@ -38,7 +38,7 @@ public class BossMoveAgent : MonoBehaviour
         get { return _attackTarget; }
         set
         {
-            _attackTarget = value;           
+            _attackTarget = value;
             damping = 7.0f;
             TraceTarget(_attackTarget);
         }

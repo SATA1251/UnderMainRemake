@@ -31,7 +31,7 @@ public class BossStoneAttack : MonoBehaviour
 
         bossAi = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossAi>();
 
-        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+        //playerTransform = GameObject.Find("Player").GetComponent<Transform>();
 
         originalPosition = GameObject.Find("RockSpownPosition").transform.position;
     }
@@ -40,9 +40,9 @@ public class BossStoneAttack : MonoBehaviour
     {
     }
 
-    public void GetPlayerPosition()
+    public void GetPlayerPosition(Vector3 playerPosition)
     {
-        targetPosition = playerTransform.position;
+        targetPosition = playerPosition;
     }
     public void StoneAttack()
     {
@@ -71,7 +71,7 @@ public class BossStoneAttack : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         // 돌에 맞을 경우
-        if(collision.collider.tag == playerTag && bossAi.state == BossAi.State.STONE_ATTACK)
+        if(collision.collider.tag == playerTag)
         {
             playerController.BeAttackedBossStone();
         }
