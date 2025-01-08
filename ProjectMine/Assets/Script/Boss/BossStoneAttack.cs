@@ -19,7 +19,7 @@ public class BossStoneAttack : MonoBehaviour
 
     private const string playerTag = "Player";
 
-    private Transform playerTransform;  // 목표
+    public Transform playerTransform;  // 목표
 
     private Vector3 targetPosition;  // 목표
 
