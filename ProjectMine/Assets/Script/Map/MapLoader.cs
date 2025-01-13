@@ -27,6 +27,7 @@ public class MapLoader : MonoBehaviour
     public GameObject startMonsterRoom;
     public GameObject monsterRoom;
     public GameObject monsterRoom2;
+    public GameObject monsterRoom3;
     public GameObject upgradeRoom;
     public GameObject gemRoom;
     public GameObject gemRoom2;
@@ -37,6 +38,8 @@ public class MapLoader : MonoBehaviour
 
     public GameObject mobMonster1;
     public GameObject mobMonster2;
+    public GameObject mobMonster3;
+    public GameObject mobMonster4;
     public GameObject upgradeSlotMachine;
     public GameObject gemS;
     public GameObject gemA;
@@ -47,17 +50,18 @@ public class MapLoader : MonoBehaviour
     private Transform mobTransform1;
     private Transform mobTransform2;
     private Transform mobTransform3;
+    private Transform mobTransform4;
 
     const int width = 50;
     const int height = 50;
     int roomX;
     int roomZ;
-    int[] roomXArray = new int[5];
-    int[] roomZArray = new int[5];
+    int[] roomXArray = new int[6];
+    int[] roomZArray = new int[6];
     int roomCreateCount = 0;
     int roomSizeX = 20;
     int roomSizeZ = 20;
-    GameObject[] roomArray = new GameObject[4];
+    GameObject[] roomArray = new GameObject[6];
 
     void Start()
     {
@@ -65,12 +69,15 @@ public class MapLoader : MonoBehaviour
         mobTransform1 = GameObject.Find("EnemyGroup_1").GetComponent<Transform>();
         mobTransform2 = GameObject.Find("EnemyGroup_2").GetComponent<Transform>();
         mobTransform3 = GameObject.Find("EnemyGroup_3").GetComponent<Transform>();
+        mobTransform4 = GameObject.Find("EnemyGroup_4").GetComponent<Transform>();
 
         // 방 배열 설정
         roomArray[0] = startMonsterRoom;
         roomArray[1] = monsterRoom;
-        roomArray[2] = upgradeRoom;
-        roomArray[3] = gemRoom;
+        roomArray[2] = monsterRoom2;
+        roomArray[3] = monsterRoom3;
+        roomArray[4] = upgradeRoom;
+        roomArray[5] = gemRoom;
 
         for (int i = 1; i < 99; i++)
         {
@@ -79,7 +86,7 @@ public class MapLoader : MonoBehaviour
                 // 벽돌 만들 확률
                 if (Random.Range(1, 11) < 8)
                 {
-                   // CreateWall(i, j, 4, wall1); // 빌드를 위해 임시주석
+                    CreateWall(i, j, 4, wall1); // 빌드를 위해 임시주석
                 }
             }
         }
@@ -91,7 +98,7 @@ public class MapLoader : MonoBehaviour
         BossRoomCreate();
 
         // 방 4개 생성
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             RoomCreate();
         }
@@ -257,6 +264,14 @@ public class MapLoader : MonoBehaviour
         {
             mobTransform2.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width*3/2 +roomX-roomSizeX+3, plane.gameObject.transform.position.y+1, plane.gameObject.transform.position.z - height*3/2+roomZ-roomSizeZ-5));
         }
+        else if (roomArray[roomCreateCount] == monsterRoom2)
+        {
+            mobTransform3.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX + 1, plane.gameObject.transform.position.y + 1, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ - 5));
+        }
+        else if (roomArray[roomCreateCount] == monsterRoom3)
+        {
+            mobTransform4.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX + 3, plane.gameObject.transform.position.y + 1, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ - 5));
+        }
         else if (roomArray[roomCreateCount] == upgradeRoom)
         {
             Instantiate(gemS, new Vector3(plane.gameObject.transform.position.x - width +roomX, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height+roomZ+3), Quaternion.identity);
@@ -277,16 +292,6 @@ public class MapLoader : MonoBehaviour
             Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width +roomX+7, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height+roomZ+7), Quaternion.identity);
             gemRoomObject2.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width*3/2 +roomX-roomSizeX-2, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height*3/2+roomZ-roomSizeZ+1));
         }
-        //else if (roomArray[roomCreateCount] == gemRoom2)
-        //{
-        //    Instantiate(gemS, new Vector3(plane.gameObject.transform.position.x - width + roomX, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 3), Quaternion.identity);
-        //    Instantiate(gemA, new Vector3(plane.gameObject.transform.position.x - width + roomX + 7, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 2), Quaternion.identity);
-        //    Instantiate(gemA, new Vector3(plane.gameObject.transform.position.x - width + roomX + 1, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ - 3), Quaternion.identity);
-        //    Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width + roomX - 3, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 6), Quaternion.identity);
-        //    Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width + roomX - 6, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ - 5), Quaternion.identity);
-        //    Instantiate(gemB, new Vector3(plane.gameObject.transform.position.x - width + roomX + 7, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height + roomZ + 7), Quaternion.identity);
-        //    gemRoomObject2.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX - 2, plane.gameObject.transform.position.y, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ + 1));
-        //}
 
 
         roomCreateCount++;

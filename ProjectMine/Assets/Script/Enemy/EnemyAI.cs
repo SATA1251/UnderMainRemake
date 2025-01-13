@@ -21,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     // 상태를 저장할 변수
      public State state = State.PATROL;
 
+    public PlayerController playerController;
+
     // 플레이어의 위치를 저장할 변수
     private Transform playerTransform;
 
@@ -81,12 +83,13 @@ public class EnemyAI : MonoBehaviour
     void Awake()
     {
         // 플레이어 게임 오브젝트 추출 // 유니티 내에서 따로 넣을거면 불필요할듯
-        var player = GameObject.FindGameObjectWithTag("Player");
+      var player = GameObject.Find("Player");
       
         // 플레이어의 Transform 컴포넌트 추출
         if (player != null)
         {
             playerTransform = player.GetComponent<Transform>();
+            playerController = player.GetComponent<PlayerController>();
         }
 
         // 적의 Transform 컴포넌트 추출
@@ -274,6 +277,23 @@ public class EnemyAI : MonoBehaviour
                     animator.SetBool(hashHit, false);
                     animator.SetBool(hashDead, true);
                     PlaySound("DEAD");
+                    if(CompareTag("Enemy"))
+                    {
+                        int num = UnityEngine.Random.Range(1, 3);
+                        if(num == 1)
+                        {
+                            playerController.oresBamount++;
+                        }
+                    }
+                    else if(CompareTag("Enemy2"))
+                    {
+                        int num = UnityEngine.Random.Range(1, 3);
+                        if (num == 1)
+                        {
+                            playerController.oresAamount++;
+                        }
+                    }
+                    
                     yield return new WaitForSeconds(stateInfo.length - stateInfo.normalizedTime * stateInfo.length);
                     Destroy(gameObject);
                     break;
