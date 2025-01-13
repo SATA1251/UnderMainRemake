@@ -161,11 +161,12 @@ public class EnemyAI : MonoBehaviour
               { 
                     state = State.CHARGE;
                     //    // 여기에 기모으는 애니메이션
-                    yield return new WaitForSeconds(2.0f);
+                    yield return new WaitForSeconds(1.0f);
                     state = State.ATTACK;
                     // 여기에 공격(돌진) 애니메이션
-                    yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
-               }
+                    yield return new WaitForSeconds(2.0f);
+                    state = State.TRACE;
+                }
                else
                {
                   state = State.TRACE;                             
@@ -261,7 +262,7 @@ public class EnemyAI : MonoBehaviour
 
                     AnimatorStateInfo stateInfoHit = animator.GetCurrentAnimatorStateInfo(0);
                     float currentTimeNormal = stateInfoHit.normalizedTime % 1.0f;
-                    if (currentTimeNormal >= 1.0f)
+                    if (currentTimeNormal >= 0.9f)
                     {
                         Debug.Log("히트 애니메이션이 성공적으로 끝났습니다.");
                         state = State.TRACE;

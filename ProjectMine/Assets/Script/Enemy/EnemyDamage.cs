@@ -48,7 +48,7 @@ public class EnemyDamage : MonoBehaviour
     {
         SpawnParticle();
         hp -= hand.applyDamage;
-        enemyCtrl.isHit1st = true;
+        //enemyCtrl.isHit1st = true;
         GetComponent<EnemyAI>().state = EnemyAI.State.HIT;
         if (hp <= 0.0f)
         {

@@ -67,6 +67,7 @@ public class BossMoveAgent : MonoBehaviour
     public void Stop()
     {
         agent.isStopped = true;
+        agent.speed = 0;
         //바로 정지하기 위해 속도를 0으로 설정
         agent.velocity = Vector3.zero;
 

@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/BSG.unity
     guid: 6cf09f8c342afdb44ba379c4f7c69852
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JHY.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0

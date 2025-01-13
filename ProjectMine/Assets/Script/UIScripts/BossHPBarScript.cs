@@ -43,7 +43,7 @@ public class BossHPBarScript : MonoBehaviour
 
         if(isNextHPStart == false)
         {
-            hpBar2.value = Mathf.Lerp(hpBar2.value, (BossHP - 250) / 250, Time.deltaTime * 10);
+            hpBar2.value = Mathf.Lerp(hpBar2.value, (BossHP - 500) / 500, Time.deltaTime * 10);
 
             if (BossHP < BossMaxHP / 2)
             {
@@ -52,7 +52,7 @@ public class BossHPBarScript : MonoBehaviour
         }
         else
         {
-            hpBar.value = Mathf.Lerp(hpBar.value, BossHP / 250, Time.deltaTime * 10);
+            hpBar.value = Mathf.Lerp(hpBar.value, BossHP / 500, Time.deltaTime * 10);
         }
 
         //hpBar.value = Mathf.Lerp(hpBar.value, Boss.GetComponent<EnemyDamage>().HP / 500, Time.deltaTime * 10);

@@ -189,7 +189,7 @@ public class BossAi : MonoBehaviour
 
 
             // 공격 사정거리 이내인 경우
-            if (enemyDamage.hp > 490)
+            if (enemyDamage.hp > 990)
             {
                 state = State.IDLE;
                 yield return new WaitForSeconds(1.0f);
@@ -217,6 +217,11 @@ public class BossAi : MonoBehaviour
 
             //0.3초 동안 대기하는중에는 제어권을 양보?
             yield return ws;
+
+            if(enemyDamage.hp <= 0)
+            {
+                state = State.DIE;
+            }
         }
 
     }
@@ -260,22 +265,25 @@ public class BossAi : MonoBehaviour
                     AnimatorStateInfo stateInfoHit = animator.GetCurrentAnimatorStateInfo(0);
                     float currentTimeNormal = stateInfoHit.normalizedTime % 1.0f;
 
-                    if (currentTimeNormal >= 0.6f && currentTimeNormal <= 0.8f)
+                    if (currentTimeNormal >= 0.6f && currentTimeNormal <= 0.7f)
                     {
                         bossAttack.gameObject.SetActive(true);
                         PlaySound("NORMAL_ATTACK");
                     }
-                    else if (currentTimeNormal >= 0.8f)
+                    else if (currentTimeNormal >= 0.7f && currentTimeNormal <= 0.9f)
                     {
                         bossAttack.gameObject.SetActive(false);
                         Debug.Log("히트 애니메이션이 성공적으로 끝났습니다.");
                         // animator.SetBool("IsAttack", false);
                        // CoolsownRoutine();
+                    }
+                    else if (currentTimeNormal >= 0.9f)
+                    {
                         normalAttackTrace = true;
                         stoneAttackCooldown = false;
                         state = State.IDLE;
                     }
-                    break;
+                        break;
 
                 case State.STONE_ATTACK:
                     moveAgent.Stop();

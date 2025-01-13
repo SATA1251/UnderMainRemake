@@ -216,7 +216,7 @@ public class HandController : MonoBehaviour
             }
             else if (collider.CompareTag("Enemy2") && hasAttacked == false)
             {
-                collider.GetComponent<EnemyDamage>().EnemyHit2();
+                collider.GetComponent<EnemyDamage>().EnemyHit();
                 audioSrc.PlayOneShot(moleHit);
                 hasAttacked = true;
 

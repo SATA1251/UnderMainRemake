@@ -86,7 +86,7 @@ public class MapLoader : MonoBehaviour
                 // 벽돌 만들 확률
                 if (Random.Range(1, 11) < 8)
                 {
-                    CreateWall(i, j, 4, wall1); // 빌드를 위해 임시주석
+                    //CreateWall(i, j, 4, wall1); // 빌드를 위해 임시주석
                 }
             }
         }
@@ -266,11 +266,11 @@ public class MapLoader : MonoBehaviour
         }
         else if (roomArray[roomCreateCount] == monsterRoom2)
         {
-            mobTransform3.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX + 1, plane.gameObject.transform.position.y + 1, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ - 5));
+            mobTransform3.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX + 3, plane.gameObject.transform.position.y + 1, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ - 5));
         }
         else if (roomArray[roomCreateCount] == monsterRoom3)
         {
-            mobTransform4.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX + 3, plane.gameObject.transform.position.y + 1, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ - 5));
+            mobTransform4.transform.Translate(new Vector3(plane.gameObject.transform.position.x - width * 3 / 2 + roomX - roomSizeX + 1, plane.gameObject.transform.position.y + 1, plane.gameObject.transform.position.z - height * 3 / 2 + roomZ - roomSizeZ - 5));
         }
         else if (roomArray[roomCreateCount] == upgradeRoom)
         {

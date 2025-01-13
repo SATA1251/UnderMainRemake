@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject ESCmenu;
     [SerializeField] private GameObject dieMenu;
     [SerializeField] private GameObject clearMenu;
+    [SerializeField] private GameObject abilityMenu;
 
 
 
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Camera theCamera;
 
-    private Rigidbody myRigid;  //플레이어의 움직임을 위한 컴포넌트
+    public Rigidbody myRigid;  //플레이어의 움직임을 위한 컴포넌트
 
 
     public bool isUnBeat = false;  //이 값이 true 상태일때 데미지가 들어온다. false이면 무테키
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
         MouseControl();
         CalculateOres();
 
-        if (!uiController.isOpened && !ESCmenu.activeSelf && !dieMenu.activeSelf && !clearMenu.activeSelf)
+        if (!uiController.isOpened && !ESCmenu.activeSelf && !dieMenu.activeSelf && !clearMenu.activeSelf && !abilityMenu.activeSelf)
         {
             Move();
 
@@ -340,7 +341,7 @@ public class PlayerController : MonoBehaviour
         hController.Oxygen -= hController.DodgeOxygen;
 
         applySpeed = dodgeSpeed;
-        Panim.SetTrigger("Dodge");
+        //Panim.SetTrigger("Dodge");
 
 
     }
