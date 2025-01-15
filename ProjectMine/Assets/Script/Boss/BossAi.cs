@@ -88,6 +88,8 @@ public class BossAi : MonoBehaviour
 
     MeshRenderer stoneMeshRenderer;
 
+    public GameObject _bossDieParticleObject;
+
     UnityEngine.Vector3 playerPosition;
     void Awake()
     {
@@ -107,6 +109,8 @@ public class BossAi : MonoBehaviour
         moveAgent = GetComponent<BossMoveAgent>();
 
         bossAttack = GameObject.Find("NormalAttack").GetComponent<BossAttack>();
+
+        _bossDieParticleObject = GameObject.Find("BossDie");
 
         stoneAttack = GameObject.FindGameObjectWithTag("Rock").GetComponent<BossStoneAttack>();
 
@@ -211,16 +215,16 @@ public class BossAi : MonoBehaviour
                 {
                     state = State.IDLE;
                     isActionInProgress = true;
-                    yield return new WaitForSeconds(2.0f);
+                    yield return new WaitForSeconds(1.8f);
                     isActionInProgress = false;
                 }
                 else
                 {
-                    if (dist <= stoneAttackDist && !stoneAttackCooldown && dist >= attackDist)
+                    if (dist <= stoneAttackDist && !stoneAttackCooldown)
                     {
                         state = State.STONE_ATTACK;
                         isActionInProgress = true;
-                        yield return new WaitForSeconds(2.0f);
+                        yield return new WaitForSeconds(1.8f);
                         isActionInProgress = false;
                     }
                     else if (dist <= attackDist)
@@ -228,7 +232,7 @@ public class BossAi : MonoBehaviour
                         state = State.NORMAL_ATTACK;
                         isActionInProgress = true;
                         //CoolsownRoutine();
-                        yield return new WaitForSeconds(2.0f);
+                        yield return new WaitForSeconds(1.8f);
                         isActionInProgress = false;
                     }
                     else if (dist > attackDist)
@@ -342,6 +346,7 @@ public class BossAi : MonoBehaviour
                         {
                             bossAttack.gameObject.SetActive(false);
                             animator.SetBool("IsAttack", false);
+                            animator.SetBool("IsMove", false);
                             normalAttackTrace = true;
                             stoneAttackCooldown = false;
                             isNormalAttackInitialized = false;
@@ -380,7 +385,7 @@ public class BossAi : MonoBehaviour
                             Debug.Log("StoneAttack animation initialized.");
                         }
 
-                        if (currentTimeStone >= 0.4f && currentTimeStone <= 0.5f)
+                        if (currentTimeStone >= 0.4f && currentTimeStone <= 0.6f)
                         {                           
                             playerPosition = playerTransform.position;
                         }
@@ -394,13 +399,13 @@ public class BossAi : MonoBehaviour
                             stoneAttack.StoneAttack();
                             Debug.Log("돌 던지기 성공");
                         }
-                        else if (currentTimeStone >= 0.95f)// && isStoneAttackInitialized)
+                        else if (currentTimeStone >= 0.9f)// && isStoneAttackInitialized)
                         {
                             animator.SetBool("IsStoneAttack", false); // 애니메이션 종료 플래그 해제
-                            stoneAttackCooldown = true;
                             stoneAttack.StoneAttackEnd();
                             //stoneMeshRenderer.enabled = false;
-                            stoneAttack.gameObject.SetActive(false);
+                            stoneAttack.gameObject.SetActive(false);                           
+                            stoneAttackCooldown = true;
                             state = State.IDLE;
 
                             // 초기화 상태 해제
@@ -417,7 +422,9 @@ public class BossAi : MonoBehaviour
                 case State.DIE:
                     moveAgent.Stop();
                      TriggerHit("Dead");
-                     yield return new WaitForSeconds(4.8f);  // 죽음 처리 대기
+                     yield return new WaitForSeconds(1.5f);  // 죽음 처리 대기
+                    enemyDamage.SpawnParticle(_bossDieParticleObject);
+                     yield return new WaitForSeconds(3.3f);  // 죽음 처리 대기
                      isDie = true;
 
                         if (isDie)

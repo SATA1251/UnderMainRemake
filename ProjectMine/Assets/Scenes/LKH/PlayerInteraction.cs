@@ -38,15 +38,14 @@ public class PlayerInteraction : MonoBehaviour
         { 
             if (uc != null) 
             {
-                //여기가 실질적으로 상호작용할 내용
-                if (uc != null && !uc.isOpened) 
+                if(!uc.isOpened)
                 {
-                    uc.OpenUI();
-                } 
-                //else if (uc != null && uc.isOpened)
-                //{
-                //    uc.CloseUI();
-                //}
+                     uc.OpenUI();                   
+                }
+                else if(uc.isOpened)
+                {
+                    uc.CloseUI();
+                }
             }
         }
     }

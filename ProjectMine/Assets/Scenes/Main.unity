@@ -3313,7 +3313,7 @@ MonoBehaviour:
   bossRoom: {fileID: 1326893286}
   gemRoomObject1: {fileID: 1607203170}
   gemRoomObject2: {fileID: 1119111414}
-  upgradeRoomObject: {fileID: 363444710}
+  gemRoomObjectBoss: {fileID: 1269476356}
   mobMonster1: {fileID: 561870282}
   mobMonster2: {fileID: 2098389371}
   mobMonster3: {fileID: 0}
@@ -4852,16 +4852,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slotmachineroom URP
       objectReference: {fileID: 0}
+    - target: {fileID: 8807208327486260211, guid: 32777c1f0f27b024ba1caf0ea1fed2f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32777c1f0f27b024ba1caf0ea1fed2f5, type: 3}
---- !u!1 &363444710 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8807208327486260211, guid: 32777c1f0f27b024ba1caf0ea1fed2f5, type: 3}
-  m_PrefabInstance: {fileID: 363444709}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &364594708
 GameObject:
   m_ObjectHideFlags: 0
@@ -20394,6 +20393,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   o2Bar: {fileID: 1261900480}
   player: {fileID: 134125423}
+--- !u!1001 &1269476355
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 731584441307191334, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 731584441307191334, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465322792256743380, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_Name
+      value: Mineralroom URP (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208136341745448185, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753918229305255260, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753918229305255260, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 731584441307191334, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+--- !u!1 &1269476356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2465322792256743380, guid: a71d95838a5f60345a9cda2db6f8b18c, type: 3}
+  m_PrefabInstance: {fileID: 1269476355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291864838
 GameObject:
   m_ObjectHideFlags: 0
@@ -28429,7 +28511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8884371268655795233, guid: 20fda529c996a334da7fd65b48ea40df, type: 3}
       propertyPath: simulationSpeed
-      value: 0.1
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884371268655795233, guid: 20fda529c996a334da7fd65b48ea40df, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30988,7 +31074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7210700805493963679, guid: fdd484cc3d93f1341a3e9280730b1ed8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 7210700805493963679, guid: fdd484cc3d93f1341a3e9280730b1ed8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31029,6 +31115,10 @@ PrefabInstance:
     - target: {fileID: 8023829594923032869, guid: fdd484cc3d93f1341a3e9280730b1ed8, type: 3}
       propertyPath: m_Name
       value: SlotMachine_rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023829594923032869, guid: fdd484cc3d93f1341a3e9280730b1ed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31994,6 +32084,7 @@ SceneRoots:
   - {fileID: 363444709}
   - {fileID: 1607203169}
   - {fileID: 1119111413}
+  - {fileID: 1269476355}
   - {fileID: 2107860405}
   - {fileID: 1536202985}
   - {fileID: 2088622805}

@@ -34,7 +34,7 @@ public class MapLoader : MonoBehaviour
     public GameObject bossRoom;
     public GameObject gemRoomObject1;
     public GameObject gemRoomObject2;
-    public GameObject upgradeRoomObject;
+    public GameObject gemRoomObjectBoss;
 
     public GameObject mobMonster1;
     public GameObject mobMonster2;
@@ -147,8 +147,16 @@ public class MapLoader : MonoBehaviour
         bossMonster.transform.Translate(new Vector3(-40, plane.gameObject.transform.position.y, -40));
 
         //Instantiate(upgradeSlotMachine, new Vector3(plane.gameObject.transform.position.x + 8 +roomSizeX/2, plane.gameObject.transform.position.y+0.5f, plane.gameObject.transform.position.z + 5+roomSizeZ/2-1f), Quaternion.identity);
-        upgradeSlotMachine.transform.Translate(new Vector3(12, plane.gameObject.transform.position.y, 17));
-        upgradeRoomObject.transform.Translate(new Vector3(27, plane.gameObject.transform.position.y, 2));
+        //upgradeSlotMachine.transform.Translate(new Vector3(12, plane.gameObject.transform.position.y, 17));
+        gemRoomObjectBoss.transform.Translate(new Vector3(27, plane.gameObject.transform.position.y, 2));
+
+        Instantiate(gemS, new Vector3(69, plane.gameObject.transform.position.y, 64 + 3), Quaternion.identity);
+        Instantiate(gemA, new Vector3(69 + 7, plane.gameObject.transform.position.y, 64 + 2), Quaternion.identity);
+        Instantiate(gemA, new Vector3(69 + 1, plane.gameObject.transform.position.y, 64 - 3), Quaternion.identity);
+        Instantiate(gemB, new Vector3(69 - 3, plane.gameObject.transform.position.y, 64 + 6), Quaternion.identity);
+        Instantiate(gemB, new Vector3(69 - 6, plane.gameObject.transform.position.y, 64 - 5), Quaternion.identity);
+        Instantiate(gemB, new Vector3(69 + 7, plane.gameObject.transform.position.y, 64 + 7), Quaternion.identity);
+        gemRoomObjectBoss.transform.Translate(new Vector3(-6, plane.gameObject.transform.position.y, 20));
 
 
         // 테두리 벽 생성(보스방)

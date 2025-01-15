@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 204
+  controlID: 18
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 28
+  controlID: 19
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -391,9 +391,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: c0a7284ad79d1a64c862a90404b99606, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 48e808bddd632894ea6619de2faac3b8, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -8452608799669973621, guid: c0a7284ad79d1a64c862a90404b99606, type: 2}
+  - m_Target: {fileID: -8189384860916671222, guid: 48e808bddd632894ea6619de2faac3b8, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -788,9 +788,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 85.03591, y: -12.365385, z: 82.34098}
+    m_Target: {x: 70.266075, y: -62.173717, z: -1.374588}
     speed: 2
-    m_Value: {x: 85.03591, y: -12.365385, z: 82.34098}
+    m_Value: {x: 70.266075, y: -62.173717, z: -1.374588}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -836,13 +836,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.033616927, y: 0.9593621, z: -0.13126922, w: 0.2480652}
+    m_Target: {x: 0.4877948, y: 0.13603988, z: 0.0780327, w: -0.85892785}
     speed: 2
-    m_Value: {x: 0.033612326, y: 0.95923084, z: -0.13125126, w: 0.24803126}
+    m_Value: {x: 0.48595807, y: 0.14129138, z: 0.080734074, w: -0.8586988}
   m_Size:
-    m_Target: 1.57404
+    m_Target: 0.8660254
     speed: 2
-    m_Value: 1.57404
+    m_Value: 0.8660254
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1070,7 +1070,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -16894
+  m_LastSelectedObjectID: 39318
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1108,9 +1108,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 02beffff
-      m_LastClickedID: -16894
-      m_ExpandedIDs: e0f9ffff9e6c0000
+      m_SelectedIDs: 6e100100
+      m_LastClickedID: 0
+      m_ExpandedIDs: fc5afdffba7efdff14dffdff00e4fdff0ae4fdff76e7fdffa048feff7c4afeff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1179,7 +1179,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Script/Boss
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1187,16 +1187,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Script/Boss
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: E:\unityPO\UnderMainRemake\ProjectMine
+  m_LastProjectPath: C:\Bae\UnityPO\UnderMainRemake\ProjectMine
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b2a90000
-    m_LastClickedID: 43442
-    m_ExpandedIDs: 0000000040a9000042a9000044a9000046a9000048a900004aa900008ea9000000ca9a3b
+    m_SelectedIDs: 6a420000
+    m_LastClickedID: 17002
+    m_ExpandedIDs: 00000000224100001642000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1224,7 +1224,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000040a9000042a9000044a9000046a9000048a900004aa90000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1276,10 +1276,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 351}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 139
+  m_DirectoriesAreaWidth: 149
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52

@@ -193,6 +193,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Screen coordinates where mouse was clicked: " + mousePosition);
             }
         }
+        else
+        {
+            myRigid.velocity = Vector3.zero;
+            Panim.SetBool("Walk", false);
+        }
         BuffOn();
 
     }
@@ -280,12 +285,14 @@ public class PlayerController : MonoBehaviour
         // 앞뒤
         float _moveDirZ = Input.GetAxisRaw("Vertical");
 
-        Vector3 _moveHorizontal = transform.right * _moveDirX;
-        Vector3 _moveVertical = transform.forward * _moveDirZ;
 
-        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
+            Debug.Log("켜져있는데 왜 들어와");
+            Vector3 _moveHorizontal = transform.right * _moveDirX;
+            Vector3 _moveVertical = transform.forward * _moveDirZ;
 
-        myRigid.velocity = _velocity;
+            Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
+
+            myRigid.velocity = _velocity;
 
         //myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);        원본
 
@@ -311,6 +318,7 @@ public class PlayerController : MonoBehaviour
         // PlaySound("WALKSOUND");
 
         //audioSrc.Play();
+        
     }
 
     private void TryDodge()

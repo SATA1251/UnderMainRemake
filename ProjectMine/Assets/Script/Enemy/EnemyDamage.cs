@@ -77,8 +77,8 @@ public class EnemyDamage : MonoBehaviour
 
         if (hp <= 0.0f)
         {
-            SpawnParticle(_bossDieParticleObject);
             GetComponent<BossAi>().state = BossAi.State.DIE;
+           // SpawnParticle(_bossDieParticleObject);
         }
     }
 

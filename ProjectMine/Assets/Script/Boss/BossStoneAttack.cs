@@ -10,7 +10,9 @@ public class BossStoneAttack : MonoBehaviour
 
     // 플레이어의 위치를 저장할 변수
 
-    private Vector3 originalPosition;
+    GameObject rockPoint;
+
+    private Transform originalPosition;
 
     // 던질 플레이어의 위치
     private Transform throwPoint;
@@ -23,7 +25,7 @@ public class BossStoneAttack : MonoBehaviour
 
     private Vector3 targetPosition;  // 목표
 
-    float throwForce = 5.0f;
+    float throwForce = 10.0f;
 
     void Start()
     {
@@ -33,7 +35,12 @@ public class BossStoneAttack : MonoBehaviour
 
         //playerTransform = GameObject.Find("Player").GetComponent<Transform>();
 
-        originalPosition = GameObject.Find("RockSpownPosition").transform.position;
+        rockPoint = GameObject.Find("RockSpownPosition");
+
+        if(rockPoint != null)
+        {
+            originalPosition = rockPoint.GetComponent<Transform>();
+        }
     }
 
     private void Update()
@@ -63,7 +70,7 @@ public class BossStoneAttack : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            gameObject.transform.position = originalPosition;
+            gameObject.transform.position = originalPosition.position;
         }
           
     }
