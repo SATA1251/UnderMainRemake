@@ -23,7 +23,7 @@ public class BossStoneAttack : MonoBehaviour
 
     private Vector3 targetPosition;  // ∏Ò«•
 
-    float throwForce = 20.0f;
+    float throwForce = 5.0f;
 
     void Start()
     {

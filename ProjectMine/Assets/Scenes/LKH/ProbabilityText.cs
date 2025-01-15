@@ -30,56 +30,32 @@ public class ProbabilityText : MonoBehaviour
 
     private void CalculateProbability()
     {
-        if(uc != null) 
-        { 
-            if(uc.Samount == 3 && !acceptedS)     //S광물을 3개 넣었을 때
+        if (uc != null)
+        {
+            // S광물 추가에 따른 확률 계산
+            if (uc.Samount > 0)
             {
-                rateB -= 5;
-                rateA += 1;
-                rateS += 4;
-
-                acceptedS = true;
-            }
-            else if(uc.Samount != 3 && acceptedS)
-            { 
-                rateB += 5;
-                rateA -= 1;
-                rateS -= 4;
-
-                acceptedS = false;
+                rateB = 50 - (uc.Samount * 5);
+                rateA = 30 + (uc.Samount * 1);
+                rateS = 20 + (uc.Samount * 4);
             }
 
-            if(uc.Aamount == 6 && !acceptedA)     //A광물을 6개 넣었을 때
+            // A광물 추가에 따른 확률 계산
+            if (uc.Aamount > 0)
             {
-                rateB -= 4;
-                rateA += 2;
-                rateS += 2;
-
-                acceptedA = true;
-            }
-            else if( uc.Aamount != 6 && acceptedA)
-            {
-                rateB += 4;
-                rateA -= 2;
-                rateS -= 2;
-
-                acceptedA = false;
+                rateB -= (uc.Aamount * 4);
+                rateA += (uc.Aamount * 2);
+                rateS += (uc.Aamount * 2);
             }
 
-            if(uc.Bamount == 10 && !acceptedB)      //B광물을 10개 넣었을 때
+            // B광물 추가에 따른 확률 계산
+            if (uc.Bamount > 0)
             {
-                rateB -= 4;
-                rateA += 4;
-
-                acceptedB = true;
-            }
-            else if(uc.Bamount != 10 && acceptedB)
-            {
-                rateB += 4;
-                rateA -= 4;
-
-                acceptedB = false;
+                rateB += (uc.Bamount * 4);
+                rateA -= (uc.Bamount * 2);
+                rateS -= (uc.Bamount * 2);
             }
         }
     }
+
 }

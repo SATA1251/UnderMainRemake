@@ -9,9 +9,9 @@ public class EnemyDamage : MonoBehaviour
 
     public float enemyDamage = 30.0f;
 
-    public float bossNormalDamage = 100.0f;
+    public float bossNormalDamage = 40.0f;
 
-    public float bossThrowDamage = 70.0f;
+    public float bossThrowDamage = 30.0f;
     //public bool isHit = false;
 
     public HandController handController;
@@ -21,24 +21,26 @@ public class EnemyDamage : MonoBehaviour
     private EnemyCtrl enemyCtrl;
 
     public GameObject _hitParticleObject;
+    public GameObject _bossDieParticleObject;
     public Transform _spawnhitParticle;
     void Start()
     {
         handController = GameObject.Find("Holder").GetComponent<HandController>();
         hand = GameObject.Find("Hand").GetComponent<Hand>();
         enemyCtrl = GameObject.Find("EnemyCtrl").GetComponent<EnemyCtrl>();
-        _hitParticleObject = GameObject.Find("BasicHit");     
+        _hitParticleObject = GameObject.Find("BasicHit");
+        _bossDieParticleObject = GameObject.Find("BossDie");     
     }
 
-    public void SpawnParticle()
+    public void SpawnParticle(GameObject particleSpawn)
     {
-        if(_hitParticleObject != null)
+        if(particleSpawn != null)
         {
             Vector3 position = transform.position;
             position.y = transform.position.y + 2;
             Quaternion rotation = Quaternion.identity;
 
-            GameObject particle = Instantiate(_hitParticleObject, position, rotation);
+            GameObject particle = Instantiate(particleSpawn, position, rotation);
 
             Destroy(particle, particle.GetComponent<ParticleSystem>().main.duration); 
         }
@@ -46,7 +48,7 @@ public class EnemyDamage : MonoBehaviour
 
     public void EnemyHit()
     {
-        SpawnParticle();
+        SpawnParticle(_hitParticleObject);
         hp -= hand.applyDamage;
         //enemyCtrl.isHit1st = true;
         GetComponent<EnemyAI>().state = EnemyAI.State.HIT;
@@ -58,7 +60,7 @@ public class EnemyDamage : MonoBehaviour
     }
     public void EnemyHit2()
     {
-        SpawnParticle();
+        SpawnParticle(_hitParticleObject);
         hp -= hand.applyDamage;
         enemyCtrl.isHit2nd = true;
         GetComponent<EnemyAI>().state = EnemyAI.State.HIT;
@@ -75,6 +77,7 @@ public class EnemyDamage : MonoBehaviour
 
         if (hp <= 0.0f)
         {
+            SpawnParticle(_bossDieParticleObject);
             GetComponent<BossAi>().state = BossAi.State.DIE;
         }
     }

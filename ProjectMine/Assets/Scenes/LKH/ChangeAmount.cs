@@ -51,7 +51,7 @@ public class ChangeAmount : MonoBehaviour
 
         if (grandParentTransform.CompareTag("SContainer"))
         {
-            if (pc.oresSamount > 0 && uc.Samount < 3)                           //S등급 최대 갯수는 3개
+            if (pc.oresSamount > 0)                           
             {
                 pc.oresSamount--;                                               //플레이어의 광물을 빼고
                 uc.Samount++;                                                   //여기에는 추가한다
@@ -59,7 +59,7 @@ public class ChangeAmount : MonoBehaviour
         }
         else if (grandParentTransform.CompareTag("AContainer"))
         {
-            if (pc.oresAamount > 0 && uc.Aamount < 6)                           //A등급 최대 갯수는 6개
+            if (pc.oresAamount > 0 )                           
             {
                 pc.oresAamount--;
                 uc.Aamount++;
@@ -67,7 +67,7 @@ public class ChangeAmount : MonoBehaviour
         }
         else if (grandParentTransform.CompareTag("BContainer"))
         {
-            if (pc.oresBamount > 0 && uc.Bamount < 10)
+            if (pc.oresBamount > 0 )
             {
                 pc.oresBamount--;
                 uc.Bamount++;
