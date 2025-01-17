@@ -86,7 +86,7 @@ public class MapLoader : MonoBehaviour
                 // 벽돌 만들 확률
                 if (Random.Range(1, 11) < 8)
                 {
-                    //CreateWall(i, j, 4, wall1); // 빌드를 위해 임시주석
+                    CreateWall(i, j, 4, wall1); // 빌드를 위해 임시주석
                 }
             }
         }
